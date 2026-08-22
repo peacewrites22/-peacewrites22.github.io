@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Peace Writes ✍🏾</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0d0c0d;
+      color: #eee8e8;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13, 12, 13, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #272326;
+    }
+
+    .logo {
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #bdb5b8;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 9% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: #302027;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.45;
+      right: -100px;
+      top: 25%;
+    }
+
+    .hero-content {
+      max-width: 750px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .small-title {
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      color: #a99ca1;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 12vw, 92px);
+      font-weight: normal;
+      line-height: 1;
+      margin-bottom: 30px;
+    }
+
+    .hero p {
+      font-size: clamp(18px, 3vw, 25px);
+      color: #bcb3b6;
+      max-width: 600px;
+      font-style: italic;
+    }
+
+    .enter {
+      display: inline-block;
+      margin-top: 45px;
+      padding: 14px 0;
+      border-bottom: 1px solid #eee8e8;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 110px 9%;
+      border-top: 1px solid #242023;
+    }
+
+    .section-label {
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      color: #958a8e;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(38px, 7vw, 62px);
+      font-weight: normal;
+      margin-bottom: 18px;
+    }
+
+    .section-intro {
+      max-width: 650px;
+      color: #aaa1a5;
+      font-size: 18px;
+      margin-bottom: 60px;
+    }
+
+    /* WRITINGS */
+    .writing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .writing-card {
+      padding: 35px 28px;
+      border: 1px solid #2b2729;
+      background: #111011;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .writing-card:hover {
+      transform: translateY(-5px);
+      border-color: #776a70;
+      background: #151315;
+    }
+
+    .writing-number {
+      font-family: Arial, sans-serif;
+      color: #746a6e;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .writing-card h3 {
+      font-size: 25px;
+      font-weight: normal;
+      margin: 20px 0 12px;
+    }
+
+    .writing-card p {
+      color: #9e9699;
+      font-size: 15px;
+    }
+
+    .read-more {
+      display: inline-block;
+      margin-top: 25px;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c5bcc0;
+    }
+
+    /* BOOKS */
+    .book {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 55px;
+      align-items: center;
+      max-width: 850px;
+    }
+
+    .book-cover {
+      height: 390px;
+      background:
+        linear-gradient(145deg, #261b20, #0b0a0b);
+      border: 1px solid #3b3035;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      box-shadow: 15px 20px 45px rgba(0,0,0,0.4);
+    }
+
+    .book-cover-content {
+      border: 1px solid #67555d;
+      width: 100%;
+      height: 100%;
+      padding: 35px 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .book-cover small {
+      font-family: Arial, sans-serif;
+      letter-spacing: 3px;
+      font-size: 9px;
+      color: #a99ca1;
+    }
+
+    .book-cover strong {
+      font-size: 27px;
+      font-weight: normal;
+      line-height: 1.2;
+    }
+
+    .book-info h3 {
+      font-size: 38px;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+
+    .book-info p {
+      color: #aaa1a5;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 22px;
+      border: 1px solid #71666b;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-right: 8px;
+      margin-bottom: 10px;
+    }
+
+    .button:hover {
+      background: #eee8e8;
+      color: #0d0c0d;
+    }
+
+    /* ABOUT */
+    .about {
+      max-width: 750px;
+    }
+
+    .about p {
+      font-size: clamp(21px, 3vw, 28px);
+      color: #c1b9bc;
+      margin-bottom: 25px;
+    }
+
+    .signature {
+      margin-top: 40px;
+      font-size: 28px;
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 50px 9%;
+      border-top: 1px solid #242023;
+      text-align: center;
+      color: #6f676a;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    /* FULL WRITING */
+    .writing-page {
+      display: none;
+      min-height: 100vh;
+      padding: 130px 9% 100px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .writing-page.active {
+      display: block;
+    }
+
+    .writing-page h2 {
+      margin-bottom: 40px;
+    }
+
+    .piece {
+      white-space: pre-line;
+      color: #c7bec1;
+      font-size: 20px;
+      line-height: 2;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 50px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #aaa1a5;
+      cursor: pointer;
+    }
+
+    /* MOBILE */
+    @media (max-width: 650px) {
+
+      nav {
+        padding: 16px 5%;
+      }
+
+      nav .links a {
+        margin-left: 10px;
+        font-size: 9px;
+      }
+
+      .hero {
+        padding-left: 7%;
+        padding-right: 7%;
+      }
+
+      section {
+        padding: 80px 7%;
+      }
+
+      .book {
+        grid-template-columns: 1fr;
+      }
+
+      .book-cover {
+        max-width: 280px;
+        height: 380px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#home" class="logo">Peace Writes ✍🏾</a>
+
+    <div class="links">
+      <a href="#writings">Writings</a>
+      <a href="#books">Books</a>
+      <a href="#about">About</a>
+    </div>
+  </nav>
+
+
+  <!-- HOME -->
+  <main id="home">
+
+    <div class="hero">
+      <div class="hero-content">
+
+        <div class="small-title">A collection of words</div>
+
+        <h1>PEACE WRITES ✍🏾</h1>
+
+        <p>
+          For the thoughts that were never meant
+          to be spoken aloud.
+        </p>
+
+        <a href="#writings" class="enter">
+          Read my writings →
+        </a>
+
+      </div>
+    </div>
+
+
+    <!-- WRITINGS -->
+    <section id="writings">
+
+      <div class="section-label">The words</div>
+
+      <h2>WRITINGS</h2>
+
+      <p class="section-intro">
+        Dark thoughts. Soft confessions.
+        Pieces of a mind that refuses to be quiet.
+      </p>
+
+
+      <div class="writing-grid">
+
+        <article class="writing-card"
+          onclick="openWriting('truth')">
+
+          <div class="writing-number">01</div>
+
+          <h3>THE TRUTH</h3>
+
+          <p>
+            A truth about darkness, fear
+            and becoming invisible.
+          </p>
+
+          <span class="read-more">
+            Read piece →
+          </span>
+
+        </article>
+
+
+        <article class="writing-card"
+          onclick="openWriting('traffic')">
+
+          <div class="writing-number">02</div>
+
+          <h3>RED. YELLOW. GREEN.</h3>
+
+          <p>
+            Sometimes "go" doesn't mean
+            you're ready.
+          </p>
+
+          <span class="read-more">
+            Read piece →
+          </span>
+
+        </article>
+
+
+        <article class="writing-card"
+          onclick="openWriting('untitled')">
+
+          <div class="writing-number">03</div>
+
+          <h3>UNTITLED</h3>
+
+          <p>
+            For the days when existing
+            feels like disappearing.
+          </p>
+
+          <span class="read-more">
+            Read piece →
+          </span>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- BOOKS -->
+    <section id="books">
+
+      <div class="section-label">Published work</div>
+
+      <h2>BOOKS</h2>
+
+      <p class="section-intro">
+        Books born from the thoughts that refused
+        to stay inside my head.
+      </p>
+
+
+      <div class="book">
+
+        <div class="book-cover">
+
+          <div class="book-cover-content">
+
+            <small>PEACE WRITES</small>
+
+            <strong>
+              YOUR BOOK<br>
+              TITLE
+            </strong>
+
+            <small>
+              POEMS • CONFESSIONS • THOUGHTS
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="book-info">
+
+          <h3>BOOK TITLE</h3>
+
+          <p>
+            A collection of dark poems,
+            confessions and thoughts from
+            a mind learning to survive itself.
+          </p>
+
+          <a href="#" class="button">
+            Read
+          </a>
+
+          <a href="#" class="button">
+            Buy
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+      <div class="section-label">Behind the words</div>
+
+      <h2>ABOUT THE WRITER</h2>
+
+      <div class="about">
+
+        <p>
+          I write about the things people
+          feel but rarely say.
+        </p>
+
+        <p>
+          The darkness.<br>
+          The loneliness.<br>
+          The strange beauty of becoming.
+        </p>
+
+        <p>
+          The thoughts that visit at 2 a.m.
+          and refuse to leave.
+        </p>
+
+        <div class="signature">
+          I am Peace.
+        </div>
+
+        <p>
+          And this is where I put the words.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FULL WRITING PAGES -->
+
+  <div id="truth" class="writing-page">
+
+    <span class="back" onclick="closeWriting()">
+      ← Back to writings
+    </span>
+
+    <div class="section-label">Writing 01</div>
+
+    <h2>THE TRUTH</h2>
+
+    <div class="piece">
+There are some truths
+we only admit to ourselves
+when the room is dark.
+
+The kind that sit quietly
+behind our smiles.
+
+The kind that whisper
+that maybe we are tired
+of pretending to be okay.
+
+Sometimes darkness
+is not the absence of light.
+
+Sometimes it is simply
+the place where we finally
+stop pretending.
+
+And maybe becoming invisible
+was never about disappearing.
+
+Maybe it was about
+being unseen for so long
+that we forgot
+what it felt like
+to be noticed.
+    </div>
+
+  </div>
+
+
+  <div id="traffic" class="writing-page">
+
+    <span class="back" onclick="closeWriting()">
+      ← Back to writings
+    </span>
+
+    <div class="section-label">Writing 02</div>
+
+    <h2>RED. YELLOW. GREEN.</h2>
+
+    <div class="piece">
+Red means stop.
+
+Yellow means wait.
+
+Green means go.
+
+At least,
+that is what they taught us.
+
+But nobody taught us
+that sometimes
+green can still feel terrifying.
+
+Sometimes the door opens
+and we are still standing there.
+
+Sometimes "go"
+doesn't mean
+you're ready.
+
+Maybe courage
+isn't the absence of fear.
+
+Maybe courage
+is taking one small step
+while your hands
+are still shaking.
+    </div>
+
+  </div>
+
+
+  <div id="untitled" class="writing-page">
+
+    <span class="back" onclick="closeWriting()">
+      ← Back to writings
+    </span>
+
+    <div class="section-label">Writing 03</div>
+
+    <h2>UNTITLED</h2>
+
+    <div class="piece">
+Some days
+I don't want to disappear.
+
+I just want
+everything around me
+to become quiet.
+
+No questions.
+
+No expectations.
+
+No pretending.
+
+Just silence.
+
+A place where I can exist
+without having to explain
+why existing feels
+so heavy sometimes.
+
+Maybe tomorrow
+will be softer.
+
+For now,
+I am still here.
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    ©️ 2026 Peace Writes ✍🏾
+    <br><br>
+    Words that were never meant
+    to be spoken aloud.
+  </footer>
+
+
+  <script>
+
+    function openWriting(id) {
+
+      document.getElementById("home").style.display = "none";
+
+      document.querySelectorAll(".writing-page")
+        .forEach(page => {
+          page.classList.remove("active");
+        });
+
+      document.getElementById(id)
+        .classList.add("active");
+
+      window.scrollTo(0, 0);
+    }
+
+
+    function closeWriting() {
+
+      document.querySelectorAll(".writing-page")
+        .forEach(page => {
+          page.classList.remove("active");
+        });
+
+      document.getElementById("home").style.display = "block";
+
+      window.location.hash = "writings";
+
+      window.scrollTo(0, 0);
+    }
+
+  </script>
+
+</body>
+</html>
